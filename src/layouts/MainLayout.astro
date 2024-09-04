@@ -18,14 +18,10 @@ const {PageTitle} = Astro.props
 		<title>{PageTitle}</title>
 	</head>
 	<body>
-        <header>
-            <Header />
-        </header>
+        <Header Theme="dark" />
         <main>
             <slot />
         </main>
-        <footer>
-            <Footer />
-        </footer>
+        <Footer Theme="dark" />
 	</body>
 </html>

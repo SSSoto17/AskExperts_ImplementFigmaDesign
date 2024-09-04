@@ -17,15 +17,13 @@
   --clr-section-bg: var(--clr-secondary-02);
   --clr-card-text: var(--clr-primary-03);
   --clr-card-bg: none;
+  --clr-btn-bg: var(--clr-primary-03);
+  --clr-btn-label: var(--clr-secondary-02);
 }
 
 /* TEXT | SIZING */
 
 /* SPACING */
-
-:root {
-  --spc-margin: min(1rem, 1fr);
-}
 
 /* CORNER RADIUS */
 
@@ -36,4 +34,9 @@
   --crn-popup: 1.875rem;
   --crn-btn: 2.625rem;
   --crn-input: 3.375rem;
+}
+
+:root {
+  --content-width: minmax(0, 75rem);
+  --margin-width: minmax(2.5svw, 1fr);
 }

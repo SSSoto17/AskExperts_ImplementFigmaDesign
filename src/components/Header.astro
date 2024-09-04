@@ -1,5 +1,60 @@
 ---
 
+import Button from "./Button.astro"
+
+const {Theme} = Astro.props
+
 ---
 
-<h2>Header</h2>
+<header data-theme={Theme}>
+    <nav>
+        <h2>AskExperts</h2>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="">Case Study</a></li>
+            <li><a href="">Team</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+        <Button Label="Login" Type="nav"/>
+    </nav>
+</header>
+
+
+<style>
+
+    header {
+        color: var(--clr-section-text);
+        background: var(--clr-section-bg);
+        padding: 2.375rem;
+    }
+
+    nav {
+        place-self: stretch;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        /* width: 100%; */
+
+        h2 {
+        font-family: Cabin;
+        font-size: 1.875rem;
+        font-weight: 600;
+        line-height: 105%; /* 1.96875rem */
+        }
+
+        ul {
+            display: flex;
+            gap: 1.875rem;
+            margin: 0;
+            list-style: none;
+
+            a {
+                color: var(--clr-section-text);
+                text-decoration: none;
+                font-size: 1.108rem;
+                line-height: 160%; /* 1.77281rem */
+            }
+        }
+    }
+
+</style>

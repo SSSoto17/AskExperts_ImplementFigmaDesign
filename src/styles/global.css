@@ -27,8 +27,9 @@ body {
   /* LAYOUT */
   display: grid;
   grid-template-columns:
-    [full-bleed-start] 1fr [main] min(100svw - 2rem, 1120px)
-    1fr [full-bleed-end];
+    [full-bleed-start] var(--margin-width)
+    [main] var(--content-width)
+    var(--margin-width) [full-bleed-end];
   grid-template-rows: [header] auto [main] 1fr [footer] auto;
   min-height: 100svh;
 
@@ -39,6 +40,7 @@ body {
 
     > * {
       grid-column: main;
+      place-self: start;
     }
 
     .full-bleed {

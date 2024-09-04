@@ -1,0 +1,60 @@
+---
+
+const {Label, Type} = Astro.props
+
+---
+
+<button data-theme={Type}>
+    {Label}
+</button>
+
+
+<style>
+
+    button {
+        color: var(--clr-btn-label);
+        background: var(--clr-btn-bg);
+        border-radius: var(--crn-btn);
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 160%; /* 1.8rem */
+        padding: 1rem 2.0625rem;
+        border: 2px solid var(--clr-btn-border);        
+    }
+
+    [data-theme="primary"] {
+        --clr-btn-bg: var(--clr-primary-03);
+        --clr-btn-label: var(--clr-secondary-02);
+        --clr-btn-border: var(--clr-primary-03);
+        &:hover {
+            --clr-btn-bg: var(--clr-secondary-02);
+            --clr-btn-label: var(--clr-primary-03);
+        }
+    }
+
+    [data-theme="secondary"] {
+        --clr-btn-bg: var(--clr-primary-01);
+        --clr-btn-label: var(--clr-primary-03);
+
+        &:hover {
+            --clr-btn-bg: var(--clr-primary-03);
+            --clr-btn-label: var(--clr-secondary-02);
+        }
+    }
+
+    [data-theme="nav"] {
+        --clr-btn-bg: var(--clr-primary-01);
+        --clr-btn-label: var(--clr-primary-03);
+        --crn-btn: 1.25rem;
+        font-family: Lato;
+        font-size: 1.108rem;
+        font-weight: 400;
+        line-height: 160%; /* 1.77281rem */
+        padding: 0.25rem 1rem;
+
+        &:hover {
+            --clr-btn-bg: var(--clr-secondary-02);
+        }
+    }
+
+</style>

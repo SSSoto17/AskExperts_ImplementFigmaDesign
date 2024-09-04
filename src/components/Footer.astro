@@ -1,6 +1,26 @@
 ---
 
+const {Theme} = Astro.props;
+
 ---
 
-<h2>Footer</h2>
+<footer data-theme={Theme}>
+    <h2>AskExperts</h2>
+    <p>©2022 Consultalk. All rights reserved | Terms of Service | Privacy Policy</p>
+</footer>
+
+<style>
+
+    footer {
+        color: var(--clr-section-text);
+        background: var(--clr-section-bg);
+        padding: 2.875rem 0rem;
+        > * {
+            place-self: center;
+        }        
+    }
+
+</style>
+
+
 
