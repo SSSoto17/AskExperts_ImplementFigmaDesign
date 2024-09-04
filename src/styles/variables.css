@@ -1,0 +1,39 @@
+/* IMPORTS */
+
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* COLOUR */
+
+:root {
+  --clr-primary-01: oklch(86.79% 0.153 86.78);
+  --clr-primary-02: oklch(67.36% 0.163 143.5);
+  --clr-primary-03: oklch(20.9% 0 0);
+  --clr-secondary-01: oklch(97.02% 0 0);
+  --clr-secondary-02: oklch(100% 3.5594404384177905e-8 106.37411429114086);
+
+  /* DEFAULT COLOURS */
+
+  --clr-section-text: var(--clr-primary-03);
+  --clr-section-bg: var(--clr-secondary-02);
+  --clr-card-text: var(--clr-primary-03);
+  --clr-card-bg: none;
+}
+
+/* TEXT | SIZING */
+
+/* SPACING */
+
+:root {
+  --spc-margin: min(1rem, 1fr);
+}
+
+/* CORNER RADIUS */
+
+:root {
+  --crn-card: 1.25rem;
+  --crn-img: 1.75rem;
+  --crn-card-heading: 1.8125rem;
+  --crn-popup: 1.875rem;
+  --crn-btn: 2.625rem;
+  --crn-input: 3.375rem;
+}
