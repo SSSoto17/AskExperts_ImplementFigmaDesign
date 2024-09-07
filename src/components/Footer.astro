@@ -1,23 +1,40 @@
 ---
 
+import Newsletter from "./Newsletter.astro";
+
 const {Theme} = Astro.props;
 
 ---
 
+<!-- <Newsletter /> -->
 <footer data-theme={Theme}>
-    <h2>AskExperts</h2>
+    <p class="heading-5">AskExperts</p>
     <p>©2022 Consultalk. All rights reserved | Terms of Service | Privacy Policy</p>
 </footer>
 
 <style>
 
     footer {
-        color: var(--clr-section-text);
-        background: var(--clr-section-bg);
-        padding: 2.875rem 0rem;
+        padding: var(--space-m) 0;
         > * {
             place-self: center;
-        }        
+            text-align: center;
+        }
+
+        > * + * {
+            margin-block-start: var(--space-s);
+            padding-top: var(--space-s);
+            border-top: 0.0625rem solid #707070;      
+        }
+
+        p.heading-5 {
+            line-height: 105%; /* 1.96875rem */;
+        }
+
+        p {
+            width: 100%;
+            line-height: 147.5%; /* 1.475rem */
+        }
     }
 
 </style>

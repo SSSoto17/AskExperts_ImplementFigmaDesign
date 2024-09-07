@@ -1,0 +1,64 @@
+---
+import Button from "../Button.astro";
+import Card from "../Card.astro";
+import Tagline from "../Tagline.astro";
+
+const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend-design/main/resources/json/corevalues.json")
+    .then(res=>res.json());
+
+---
+
+<section data-theme="dark">
+    <Tagline>Growing with our Clients</Tagline>
+    <header class="flow-space">
+        <h2 class="heading-2">{content.title}</h2>
+        <p>{content.subtitle}</p>
+        <Button label={content.button.text} variant="tertiary" />
+    </header>
+    <ul role="list">
+        {content.values.map(card => {
+            return <li><Card data={card} /></li>
+        })}
+    </ul>
+</section>
+
+<style>
+
+section {
+        padding: var(--space-2xl) 0;
+
+        header {
+            --flow-space: var(--step-0);            
+            margin-block-end: var(--space-l);
+
+            svg, h2, p {
+                grid-column: 1 / -2;
+            }
+            p, button {
+                grid-row: 3;
+            }
+
+            @media (600px < width) {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: repeat(3, auto);
+                gap: 0 var(--space-s);
+            }
+        }
+
+        ul {
+            display: flex;
+            gap: var(--space-s);
+            
+            li {
+                flex-basis: min(400px, 90%);
+                align-self: start;
+                
+                &:has(a:hover) {
+                    scale: 1.1;
+                }
+            }
+        }
+    }
+
+</style>

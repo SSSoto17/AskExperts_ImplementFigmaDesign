@@ -1,60 +1,85 @@
 ---
 
 import Button from "./Button.astro"
+import Popover from "./Popover.astro"
 
 const {Theme} = Astro.props
 
 ---
 
 <header data-theme={Theme}>
-    <nav>
-        <h2>AskExperts</h2>
-        <ul>
+    <nav class="desktop">
+        <p class="heading-5">AskExperts</p>
+        <ul role="list" class="active">
             <li><a href="/">Home</a></li>
             <li><a href="">Case Study</a></li>
             <li><a href="">Team</a></li>
             <li><a href="">About</a></li>
         </ul>
-        <Button Label="Login" Type="nav"/>
+        <Button popup="login" label="Login" variant="nav"/>
     </nav>
+    <nav class="mobile">
+        <p class="heading-5">AskExperts</p>
+        <ul role="list">
+            <li><a href="/">Home</a></li>
+            <li><a href="">Case Study</a></li>
+            <li><a href="">Team</a></li>
+            <li><a href="">About</a></li>
+            <li><Button popup="#login" label="Login" variant="nav"/></li>
+        </ul>
+    </nav>
+    <Popover />
 </header>
 
 
 <style>
-
     header {
-        color: var(--clr-section-text);
-        background: var(--clr-section-bg);
-        padding: 2.375rem;
+        padding: var(--space-s);
+        position: sticky;
+        top: 0;
+    }
+
+    nav.desktop {
+        display: none;
     }
 
     nav {
-        place-self: stretch;
         display: flex;
+        place-self: stretch;
         align-items: flex-start;
         justify-content: space-between;
-        /* width: 100%; */
 
-        h2 {
-        font-family: Cabin;
-        font-size: 1.875rem;
-        font-weight: 600;
+        p.heading-5 {
         line-height: 105%; /* 1.96875rem */
         }
 
         ul {
-            display: flex;
-            gap: 1.875rem;
-            margin: 0;
-            list-style: none;
-
+            display: none;
             a {
-                color: var(--clr-section-text);
                 text-decoration: none;
-                font-size: 1.108rem;
-                line-height: 160%; /* 1.77281rem */
             }
         }
+
+        ul.active {
+            display: block;
+        }
+    }
+
+    @media (900px < width) {
+
+        nav.mobile {
+            display: none;
+        }
+
+        nav.desktop {
+            display: flex;
+
+            ul.active {
+            display: flex;
+            gap: clamp(1.5rem, 1.3696rem + 0.6522vw, 1.875rem);
+        }
+        }      
+
     }
 
 </style>

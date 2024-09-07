@@ -1,0 +1,94 @@
+---
+
+import { Icon } from 'astro-icon/components'
+import Card from "../Card.astro";
+
+const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend-design/main/resources/json/projections.json")
+    .then(res=>res.json());
+
+---
+
+<section data-theme="medium">
+    <header class="flow-space">
+        <Icon name="fp/header" />
+        <h2 class="heading-2">{content.title}</h2>
+        <p>{content.subtitle}</p>
+        <nav>
+            <Icon name="fp/arrow-left" /> 
+            <Icon name="fp/arrow-right" />
+        </nav>        
+    </header>
+    <ul role="list" class="full-bleed">
+        {content.values.map(card => {
+            return <li><Card data={card} /></li>
+        })}
+    </ul>
+</section>
+
+<style>
+    section {
+        padding: var(--space-2xl) 0;
+
+        header {
+            --flow-space: var(--step-0);            
+            margin-block-end: var(--space-l);
+
+            svg, h2, p {
+                grid-column: 1 / -2;
+            }
+            p, nav {
+                grid-row: 3;
+            }
+            nav {
+                grid-column: 2;                
+                display: flex;
+                gap: var(--space-xs);
+                margin-block-start: var(--space-s);
+
+                > * {
+                    cursor: pointer;
+                    &:hover {
+                        scale: 1.1;
+                    }
+                }
+            }
+
+            @media (600px < width) {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: repeat(3, auto);
+                gap: 0 var(--space-s);
+            }
+        }
+
+        ul {
+            display: flex;
+            gap: var(--space-s);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-inline: max(1rem, 50svw - 75rem / 2);
+            -ms-overflow-style: none; /* for Internet Explorer, Edge */
+            scrollbar-width: none; /* for Firefox */
+            
+            &::-webkit-scrollbar {
+                display: none; /* for Chrome, Safari, and Opera */
+            }
+            
+            li {
+                scroll-snap-align: center;
+                flex-basis: min(400px, 90%);
+                flex-shrink: 0;
+                align-self: start;
+            }
+        }
+    }
+    
+
+    [data-icon] {
+        width: var(--space-l);
+    }
+
+    [data-icon="fp/header"] {
+        width: var(--space-xl);
+    }
+</style>

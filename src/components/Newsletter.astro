@@ -1,0 +1,28 @@
+---
+
+import Button from "./Button.astro"
+
+---
+
+    <article data-theme="dark">
+        <h4>Subscribe to Our Newsletter</h4>
+        <p>Build stronger Customer Relationships with Consultalk</p>
+        <form action="">
+            <input type="text">
+            <Button Label="Subscribe" Type="secondary" />
+        </form>
+    </article>
+
+<style>
+
+    article {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(----space-2xl);
+        place-items: center;
+        max-width: 75rem;
+        height: 15.75rem;
+        padding: 0 var(--space-l);
+    }
+
+</style>

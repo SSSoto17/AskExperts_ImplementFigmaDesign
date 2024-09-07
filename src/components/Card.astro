@@ -1,0 +1,46 @@
+---
+
+import { Icon } from 'astro-icon/components'
+
+const { data } = Astro.props
+
+---
+
+<a href={data.link.url}>
+    <article class="flow-space">
+        <Icon name={data.icon} />
+        <h3 class="heading-6">{data.title}</h3>
+        <p>{data.description}</p>
+        <slot />
+    </article>
+</a>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    article {
+        --flow-space: var(--space-3xs);
+        color: var(--clr-card-text);
+        background: var(--clr-card-bg);
+        border-radius: var(--crn-card);
+        padding: var(--space-m) var(--space-s);
+    }
+
+    [data-icon] {
+        width: var(--step-6);
+        color: var(--clr-icon);
+        margin-block-end: var(--space-xs);
+    }
+
+    .heading-1,
+.heading-2,
+.heading-3,
+.heading-4,
+.heading-5,
+.heading-6 {
+  color: var(--clr-card-heading);
+}
+
+</style>

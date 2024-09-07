@@ -1,11 +1,11 @@
 ---
 
-const {Label, Type} = Astro.props
+const {form, popup, label, variant} = Astro.props
 
 ---
 
-<button data-theme={Type}>
-    {Label}
+<button data-theme={variant} form={form} popovertarget={popup}>
+    {label}
 </button>
 
 
@@ -15,10 +15,10 @@ const {Label, Type} = Astro.props
         color: var(--clr-btn-label);
         background: var(--clr-btn-bg);
         border-radius: var(--crn-btn);
-        font-size: 1.125rem;
+        font-size: var(--step-1);
         font-weight: 600;
         line-height: 160%; /* 1.8rem */
-        padding: 1rem 2.0625rem;
+        padding: var(--space-2xs) var(--space-s);
         border: 2px solid var(--clr-btn-border);        
     }
 
@@ -42,15 +42,23 @@ const {Label, Type} = Astro.props
         }
     }
 
+    [data-theme="tertiary"] {
+        --clr-btn-bg: var(--clr-secondary-02);
+        --clr-btn-label: var(--clr-primary-03);
+
+        &:hover {
+            --clr-btn-bg: var(--clr-primary-03);
+            --clr-btn-label: var(--clr-secondary-02);
+        }
+    }
+
     [data-theme="nav"] {
         --clr-btn-bg: var(--clr-primary-01);
         --clr-btn-label: var(--clr-primary-03);
         --crn-btn: 1.25rem;
-        font-family: Lato;
-        font-size: 1.108rem;
+        font-size: clamp(0.875rem, 0.788rem + 0.4348vw, 1.108rem);
         font-weight: 400;
-        line-height: 160%; /* 1.77281rem */
-        padding: 0.25rem 1rem;
+        padding: var(--space-4xs) var(--space-2xs);
 
         &:hover {
             --clr-btn-bg: var(--clr-secondary-02);
