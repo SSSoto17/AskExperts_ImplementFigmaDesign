@@ -19,7 +19,13 @@ const {form, popup, label, variant} = Astro.props
         font-weight: 600;
         line-height: 160%; /* 1.8rem */
         padding: var(--space-2xs) var(--space-s);
-        border: 2px solid var(--clr-btn-border);        
+        border: 2px solid var(--clr-btn-border);
+        
+        header nav > & {
+            font-size: var(--step-0);
+            font-weight: 400;
+            padding: var(--space-4xs) var(--space-2xs);
+        }
     }
 
     [data-theme="primary"] {
@@ -30,38 +36,25 @@ const {form, popup, label, variant} = Astro.props
             --clr-btn-bg: var(--clr-secondary-02);
             --clr-btn-label: var(--clr-primary-03);
         }
+
+        [data-theme="dark"] & {
+            --clr-btn-bg: var(--clr-secondary-02);
+            --clr-btn-label: var(--clr-primary-03);
+
+            &:hover {
+            --clr-btn-bg: oklch(from var(--clr-secondary-01) calc(l - 0.025) c h);
+            --clr-btn-label: var(--clr-primary-03);
+        }
+        }
     }
 
     [data-theme="secondary"] {
         --clr-btn-bg: var(--clr-primary-01);
         --clr-btn-label: var(--clr-primary-03);
-
         &:hover {
-            --clr-btn-bg: var(--clr-primary-03);
-            --clr-btn-label: var(--clr-secondary-02);
-        }
-    }
-
-    [data-theme="tertiary"] {
-        --clr-btn-bg: var(--clr-secondary-02);
-        --clr-btn-label: var(--clr-primary-03);
-
-        &:hover {
-            --clr-btn-bg: var(--clr-primary-03);
-            --clr-btn-label: var(--clr-secondary-02);
-        }
-    }
-
-    [data-theme="nav"] {
-        --clr-btn-bg: var(--clr-primary-01);
-        --clr-btn-label: var(--clr-primary-03);
-        --crn-btn: 1.25rem;
-        font-size: clamp(0.875rem, 0.788rem + 0.4348vw, 1.108rem);
-        font-weight: 400;
-        padding: var(--space-4xs) var(--space-2xs);
-
-        &:hover {
-            --clr-btn-bg: var(--clr-secondary-02);
+            --clr-btn-bg: oklch(
+                from var(--clr-primary-01) calc(l - 0.015) calc(c + 0.07) calc(h - 0.15)
+                );
         }
     }
 

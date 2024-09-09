@@ -33,7 +33,6 @@ import Button from "./Button.astro";
         }
     }
     }
-    
 
     [popover] {
         &, &::backdrop {
@@ -45,7 +44,8 @@ import Button from "./Button.astro";
         }
 
         &::backdrop {
-            background: black;
+            background: var(--clr-primary-03);
+            backdrop-filter: blur(4px);
         }
 
         &:popover-open {

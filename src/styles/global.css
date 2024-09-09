@@ -4,10 +4,12 @@ body {
   /* FONT */
   font-family: "Lato", sans-serif;
   font-weight: 400;
+  color: var(--clr-section-text);
 }
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 /* COLOUR | THEMES */
@@ -26,7 +28,7 @@ a {
   .active {
     --clr-card-bg: var(--clr-primary-03);
     --clr-card-text: var(--clr-secondary-02);
-    --clr-heading: var(--clr-card-text);
+    --clr-card-heading: var(--clr-card-text);
     --clr-icon: var(--clr-primary-01);
   }
 }
@@ -47,6 +49,7 @@ a {
   );
   --clr-card-text: var(--clr-primary-03);
   --clr-card-bg: none;
+  --clr-tagline-bg: var(--clr-secondary-02);
 }
 
 /* TYPE */

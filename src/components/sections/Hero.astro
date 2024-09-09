@@ -1,0 +1,137 @@
+---
+
+import Image from "astro/components/Image.astro"
+import Button from "../Button.astro"
+import Card from "../Card.astro"
+
+import HeroImg from "../../assets/images/index-hero.png"
+
+ const cards = [
+	{
+		title: "Finance & Restructuring",
+		description: "Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.",
+		button: {
+			label: "Our Services",
+			url: "#",
+		}
+	},
+	{
+		title: "Our Approach",
+		description: "Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.",
+		button: {
+			label: "More About",
+			url: "#",
+		}
+	},
+	{
+		title: "Consultalk Result",
+		icon: "",
+		description: "Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.",
+		button: {
+			label: "Explore Our Solution",
+			url: "#",
+		}
+	} 
+ ]
+
+---
+
+<section class="full-bleed" data-theme="dark" >
+	<div class="wrapper full-bleed">
+		<article class="full-bleed">
+			<header class="flow-space">
+				<h1 class="heading-1">Adam Buschemia Business Consultant</h1>
+				<p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
+				<Button label="Book a Meeting" variant="primary" />	
+			</header>		
+			<figure>
+				<Image src={HeroImg} alt="" />
+			</figure>
+		</article>
+	</div>		
+		<ul role="list" class="hero">
+			{cards.map(card => {
+				return <li><Card data={card} /></li>
+			})}
+		</ul>	
+</section>
+
+<style>
+
+	section {
+		background: transparent;
+
+		.wrapper {	
+			background: var(--clr-section-bg);
+			grid-row: 1 / 4;
+		}
+		 
+		.wrapper article {
+			grid-column: main;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-row: 1 / span 2;
+
+			header {
+				position: relative;
+				grid-column: 1;
+				grid-row: 1;
+				padding: var(--space-xl) 0;
+
+				&::before {
+                --square-count: 12;
+                --square-size: 1.34rem;
+                
+                --_square-size: var(--square-size, 1rem);
+                --_square-half: calc(var(--square-size) / 2);
+                --_square-sum: calc(var(--square-count) * var(--square-size));
+                content: "";
+                position: absolute;
+                inset: 50% auto auto -75%;
+				transform: translateY(-50%);
+                inline-size: calc( round( var(--_square-sum), var(--_square-size) ) - var(--_square-half) );
+                aspect-ratio: 1;
+                background: linear-gradient(135deg, #BE965D, #976F40, #C99B61, #F0BE7B , #FFCB85, #EEBC79, #C0935B, #976F40) 0 0 / 100% 100%;
+                mask:
+                var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+                var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+            }
+				&::after {
+                --square-count: 4;
+                --square-size: 1rem;
+                
+                --_square-size: var(--square-size, 1rem);
+                --_square-half: calc(var(--square-size) / 2);
+                --_square-sum: calc(var(--square-count) * var(--square-size));
+                content: "";
+                position: absolute;
+                inset: 0 0 auto auto;
+                inline-size: calc( round( var(--_square-sum), var(--_square-size) ) - var(--_square-half) );
+                aspect-ratio: 1 / 1.5;
+                background: linear-gradient(135deg, #BE965D, #976F40, #C99B61, #F0BE7B , #FFCB85, #EEBC79, #C0935B, #976F40) 0 0 / 100% 100%;
+                mask:
+                var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+                var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+            }
+			}
+
+			figure {
+				grid-column: 2;
+				grid-row: 1 / span 2;
+				img {
+					width: min(50svw, 60rem);
+					height: min(100%, 38rem);
+					object-fit: cover;
+					
+				}
+			}
+		}
+
+		ul {
+				grid-column: main;
+				grid-row: 3 / 5;
+				display: flex;
+				gap: var(--space-xs);
+		}	
+	}
+</style>

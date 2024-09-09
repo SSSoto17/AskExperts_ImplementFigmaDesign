@@ -16,7 +16,7 @@ const {Theme} = Astro.props
             <li><a href="">Team</a></li>
             <li><a href="">About</a></li>
         </ul>
-        <Button popup="login" label="Login" variant="nav"/>
+        <Button popup="login" label="Login" variant="secondary"/>
     </nav>
     <nav class="mobile">
         <p class="heading-5">AskExperts</p>
@@ -25,7 +25,7 @@ const {Theme} = Astro.props
             <li><a href="">Case Study</a></li>
             <li><a href="">Team</a></li>
             <li><a href="">About</a></li>
-            <li><Button popup="#login" label="Login" variant="nav"/></li>
+            <li><Button popup="#login" label="Login" variant="secondary"/></li>
         </ul>
     </nav>
     <Popover />
@@ -37,6 +37,7 @@ const {Theme} = Astro.props
         padding: var(--space-s);
         position: sticky;
         top: 0;
+        z-index: 100;
     }
 
     nav.desktop {

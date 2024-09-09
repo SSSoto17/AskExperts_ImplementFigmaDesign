@@ -6,18 +6,19 @@ import Tagline from "../Tagline.astro";
 const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend-design/main/resources/json/corevalues.json")
     .then(res=>res.json());
 
+const {theme} = Astro.props
 ---
 
-<section data-theme="dark">
+<section data-theme={theme}>
     <Tagline>Growing with our Clients</Tagline>
     <header class="flow-space">
         <h2 class="heading-2">{content.title}</h2>
         <p>{content.subtitle}</p>
-        <Button label={content.button.text} variant="tertiary" />
+        <Button label={content.button.text} variant="primary" />
     </header>
     <ul role="list">
         {content.values.map(card => {
-            return <li><Card data={card} /></li>
+            return <li><a href={card.link.url}><Card data={card} /></a></li>
         })}
     </ul>
 </section>

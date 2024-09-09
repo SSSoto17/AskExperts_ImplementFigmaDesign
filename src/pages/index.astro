@@ -1,15 +1,22 @@
 ---
 
 import MainLayout from "../layouts/MainLayout.astro"
-import FinancialProjections from "../components/index/FinancialProjections.astro"
-import CoreValues from "../components/index/CoreValues.astro"
+import Hero from "../components/sections/Hero.astro"
+import Expectations from "../components/sections/Expectations.astro"
+import FinancialProjections from "../components/sections/FinancialProjections.astro"
+import Experience from "../components/sections/Experience.astro"
+import CoreValues from "../components/sections/CoreValues.astro"
+import Contact from "../components/sections/Contact.astro"
 
 const {Theme} = Astro.props
 
 ---
 
 <MainLayout PageTitle="AskExperts">
-	<!-- <Popover /> -->
+	<Hero />
+	<Expectations />
 	<FinancialProjections />
-	<CoreValues />
+	<Experience />
+	<CoreValues theme="dark" />
+	<Contact />
 </MainLayout>

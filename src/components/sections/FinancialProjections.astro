@@ -20,7 +20,7 @@ const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend
     </header>
     <ul role="list" class="full-bleed">
         {content.values.map(card => {
-            return <li><Card data={card} /></li>
+            return <li><a href={card.link.url}><Card data={card} /></a></li>
         })}
     </ul>
 </section>
