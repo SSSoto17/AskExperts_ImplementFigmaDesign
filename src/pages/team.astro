@@ -1,9 +1,13 @@
 ---
 
 import MainLayout from "../layouts/MainLayout.astro"
+import TeamGrid from "../components/sections/TeamGrid.astro"
+import SubHero from "../components/sections/SubHero.astro"
+import heroImg from "../assets/images/team-hero.jpg"
 
 ---
 
 <MainLayout PageTitle="AskExperts | Meet Our Great Team">
-    
+    <SubHero title="The Consultors" src={heroImg} />
+    <TeamGrid />  
 </MainLayout>

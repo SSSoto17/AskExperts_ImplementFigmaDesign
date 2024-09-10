@@ -27,9 +27,7 @@ const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend
 
 <style>
     section {
-        padding: var(--space-2xl) 0;
-
-        header {
+            header {
             --flow-space: var(--step-0);            
             margin-block-end: var(--space-l);
 
@@ -47,10 +45,15 @@ const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend
 
                 > * {
                     cursor: pointer;
+                    transition: .15s ease-in;
                     &:hover {
                         scale: 1.1;
                     }
                 }
+            }
+
+            > [data-icon] {
+                width: var(--space-xl);
             }
 
             @media (600px < width) {
@@ -79,16 +82,17 @@ const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend
                 flex-basis: min(400px, 90%);
                 flex-shrink: 0;
                 align-self: start;
+
+                &:hover {
+                    --clr-card-bg: var(--clr-primary-03);
+                    --clr-card-text: var(--clr-secondary-02);
+                    --clr-card-heading: var(--clr-card-text);
+                    --clr-icon: var(--clr-primary-01);
+                }
             }
         }
     }
-    
-
     [data-icon] {
         width: var(--space-l);
-    }
-
-    [data-icon="fp/header"] {
-        width: var(--space-xl);
     }
 </style>

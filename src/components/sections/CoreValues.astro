@@ -26,8 +26,6 @@ const {theme} = Astro.props
 <style>
 
 section {
-        padding: var(--space-2xl) 0;
-
         header {
             --flow-space: var(--step-0);            
             margin-block-end: var(--space-l);
@@ -54,6 +52,7 @@ section {
             li {
                 flex-basis: min(400px, 90%);
                 align-self: start;
+                transition: .15s ease-in;
                 
                 &:has(a:hover) {
                     scale: 1.1;

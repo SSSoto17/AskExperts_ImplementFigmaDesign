@@ -187,8 +187,8 @@ textarea:not([rows]) {
   *,
   ::before,
   ::after {
-    transition-duration: 0.01s !important;
-    animation-iteration-count: 1 !important;
-    animation: 0.01s !important;
+    transition-duration: 0.01s;
+    animation-iteration-count: 1;
+    animation: 0.01s;
   }
 }

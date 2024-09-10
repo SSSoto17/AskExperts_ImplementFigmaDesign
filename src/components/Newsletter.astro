@@ -9,7 +9,7 @@ import Button from "./Button.astro"
             <h2 class="heading-4">Subscribe to Our Newsletter</h4>
             <p>Build stronger Customer Relationships with Consultalk</p>        
         </header>
-        <form name="login" action="">
+        <form name="newsletter" action="">
             <input type="email" id="nl-email" name="email" placeholder="your email address">
             <Button label="Subscribe" variant="secondary" />
         </form>
@@ -21,23 +21,22 @@ import Button from "./Button.astro"
 
     section {
         padding: var(--space-2xl) 0;
-
         article {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(----space-2xl);
-        place-items: center;
-        max-width: 75rem;
-        height: 15.75rem;
-        padding: 0 var(--space-l);
-        border-radius: var(--crn-card);
-        position: relative;
-        overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-m) var(--space-2xl);
+            justify-content: space-between;
+            padding: var(--space-xl) var(--space-l);
+            border-radius: var(--crn-card);
+            position: relative;
+            overflow: hidden;
 
         form {
             display: flex;
+            flex-wrap: wrap;
+            flex: 1;
             place-items: center;
-            gap: var(--space-xs);
+            gap: var(--space-2xs) var(--space-xs);
             z-index: 5;
             input {
             --flow-space: var(--space-s);
@@ -46,43 +45,48 @@ import Button from "./Button.astro"
             border-radius: var(--crn-input);
             padding: var(--space-2xs) var(--space-xs);
             border: 1px solid var(--clr-card-bg);
-        }}
+            flex: 1 1;
+            max-width: 20rem;
+            }
+
+            a {padding: var(--space-2xs) var(--space-m)}
+        }
 
         &::before {
-    --square-count: 12;
-    --square-size: 1.6rem;
-    
-    --_square-size: var(--square-size, 1rem);
-    --_square-half: calc(var(--square-size) / 2);
-    --_square-sum: calc(var(--square-count) * var(--square-size));
-    content: '';
-    position: absolute;
-    opacity: 0.5;
-    right: 0;
-    top: 0;
-    transform-origin: 0 0;
-    inline-size: calc( round( var(--_square-sum), var(--_square-size) ) - var(--_square-half) );
-    aspect-ratio: .7;
-    background: linear-gradient(135deg, #BE965D, #976F40, #C99B61, #F0BE7B , #FFCB85, #EEBC79, #C0935B, #976F40) 0 0 / 100% 100%;
-    mask:
-      var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
-      var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
-    /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
-    rotate: -45deg;
-  }
+            --square-count: 12;
+            --square-size: 1.6rem;
+            
+            --_square-size: var(--square-size, 1rem);
+            --_square-half: calc(var(--square-size) / 2);
+            --_square-sum: calc(var(--square-count) * var(--square-size));
+            content: '';
+            position: absolute;
+            opacity: 0.5;
+            inset: 0 0 auto auto;
+            transform-origin: 0 0;
+            inline-size: calc( round( var(--_square-sum), var(--_square-size) ) - var(--_square-half) );
+            aspect-ratio: .7;
+            background: linear-gradient(135deg, #BE965D, #976F40, #C99B61, #F0BE7B , #FFCB85, #EEBC79, #C0935B, #976F40) 0 0 / 100% 100%;
+            mask:
+            var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+            var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+            /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
+            rotate: -45deg;
+        }
 
-  &::after {
-    content: '';
-    width: 15rem;
-    border-radius: inherit;
-    background: var(--clr-primary-02);
-    position: absolute;
-    aspect-ratio: 1;
-    top: 60%;
-    bottom: 0;
-    right: 3rem;
-    rotate: -40deg;
-    transform-origin: right top;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 25rem;
+            aspect-ratio: 2 / 1;
+            border-radius: var(--crn-popup);
+            background: var(--clr-primary-02);
+            inset: 45% 3rem auto auto;
+            /* top: 60%; */
+            /* bottom: 0; */
+            /* right: 3rem; */
+            rotate: -45deg;
+            transform-origin: right top;
   }
     }
     }    

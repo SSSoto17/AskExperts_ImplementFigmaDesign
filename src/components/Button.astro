@@ -22,6 +22,8 @@ a {
     line-height: 160%; /* 1.8rem */
     padding: var(--space-2xs) var(--space-s);
     border: 2px solid var(--clr-btn-border);
+    cursor: pointer;
+    transition: .15s ease-in;
 
     header nav > & {
             font-size: var(--step-0);
@@ -51,7 +53,7 @@ a {
             --clr-btn-label: var(--clr-primary-03);
 
             &:hover {
-            --clr-btn-bg: oklch(from var(--clr-secondary-01) calc(l - 0.025) c h);
+            --clr-btn-bg: oklch(from var(--clr-secondary-01) calc(l - 0.05) c h);
             --clr-btn-label: var(--clr-primary-03);
         }
         }

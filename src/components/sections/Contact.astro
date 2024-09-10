@@ -1,6 +1,5 @@
 ---
 
-import type { ImageMetadata } from 'astro';
 import { Image } from "astro:assets";
 
 import Tagline from "../Tagline.astro";
@@ -28,12 +27,6 @@ const contactinfo = [
     }
 ];
 
-// const imagePath = "/src/assets/contact-1.jpg";
-
-// const { imagePath, altText } = Astro.props;
-// const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}');
-// if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
-
 ---
 
 <section>
@@ -59,8 +52,6 @@ const contactinfo = [
 <style>
 
     section {
-        padding: var(--space-2xl) 0;
-
         article {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
