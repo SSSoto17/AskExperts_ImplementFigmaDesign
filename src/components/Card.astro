@@ -19,7 +19,7 @@ const { data } = Astro.props
         <p>{data.description}</p>
         {
             () => {if (data.button) {
-                return <Button label={data.button.label} />
+                return <Button label={data.button.label} url={data.button.url} />
             }}
         } 
     </article>
@@ -42,6 +42,10 @@ const { data } = Astro.props
         border-radius: var(--crn-card);
         padding: var(--space-m) var(--space-s);
 
+        a {
+            --flow-space: var(--space-s);
+        }
+
         ul.hero & {
             --clr-card-text: var(--clr-secondary-02);
             --clr-card-heading: var(--clr-card-text);
@@ -49,16 +53,10 @@ const { data } = Astro.props
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.20);
 
-            button:hover {
+            a:hover {
                 --clr-btn-bg: oklch(from var(--clr-primary-03) calc(l + 0.025) c h);
             }
         }
-
-        button {
-            --flow-space: var(--space-s);
-            padding: var(--space-2xs) var(--space-xs);
-        }
-
     }
 
     [data-icon] {

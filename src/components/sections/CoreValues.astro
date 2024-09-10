@@ -14,7 +14,7 @@ const {theme} = Astro.props
     <header class="flow-space">
         <h2 class="heading-2">{content.title}</h2>
         <p>{content.subtitle}</p>
-        <Button label={content.button.text} variant="primary" />
+        <Button url={content.button.link} label={content.button.text} variant="primary" />
     </header>
     <ul role="list">
         {content.values.map(card => {
