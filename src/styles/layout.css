@@ -6,6 +6,11 @@ body {
     var(--margin-width) [full-bleed-end];
   grid-template-rows: [header] auto [main] 1fr [footer] auto;
   min-height: 100svh;
+
+  main {
+    overflow: hidden;
+  }
+
   > *,
   main > section,
   .full-bleed {
