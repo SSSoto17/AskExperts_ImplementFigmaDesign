@@ -3,19 +3,26 @@
 import Button from "./Button.astro"
 
 ---
-
+<section>
     <article data-theme="dark">
-        <h4>Subscribe to Our Newsletter</h4>
-        <p>Build stronger Customer Relationships with Consultalk</p>
-        <form action="">
-            <input type="text">
-            <Button Label="Subscribe" Type="secondary" />
+        <header>
+            <h2 class="heading-4">Subscribe to Our Newsletter</h4>
+            <p>Build stronger Customer Relationships with Consultalk</p>        
+        </header>
+        <form name="login" action="">
+            <input type="email" id="nl-email" name="email" placeholder="your email address">
+            <Button label="Subscribe" variant="secondary" />
         </form>
     </article>
+</section>
+    
 
 <style>
 
-    article {
+    section {
+        padding: var(--space-2xl) 0;
+
+        article {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: var(----space-2xl);
@@ -23,6 +30,61 @@ import Button from "./Button.astro"
         max-width: 75rem;
         height: 15.75rem;
         padding: 0 var(--space-l);
+        border-radius: var(--crn-card);
+        position: relative;
+        overflow: hidden;
+
+        form {
+            display: flex;
+            place-items: center;
+            gap: var(--space-xs);
+            z-index: 5;
+            input {
+            --flow-space: var(--space-s);
+            color: var(--clr-card-text);
+            background-color: var(--clr-card-bg);
+            border-radius: var(--crn-input);
+            padding: var(--space-2xs) var(--space-xs);
+            border: 1px solid var(--clr-card-bg);
+        }}
+
+        &::before {
+    --square-count: 12;
+    --square-size: 1.6rem;
+    
+    --_square-size: var(--square-size, 1rem);
+    --_square-half: calc(var(--square-size) / 2);
+    --_square-sum: calc(var(--square-count) * var(--square-size));
+    content: '';
+    position: absolute;
+    opacity: 0.5;
+    right: 0;
+    top: 0;
+    transform-origin: 0 0;
+    inline-size: calc( round( var(--_square-sum), var(--_square-size) ) - var(--_square-half) );
+    aspect-ratio: .7;
+    background: linear-gradient(135deg, #BE965D, #976F40, #C99B61, #F0BE7B , #FFCB85, #EEBC79, #C0935B, #976F40) 0 0 / 100% 100%;
+    mask:
+      var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+      var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+    /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
+    rotate: -45deg;
+  }
+
+  &::after {
+    content: '';
+    width: 15rem;
+    border-radius: inherit;
+    background: var(--clr-primary-02);
+    position: absolute;
+    aspect-ratio: 1;
+    top: 60%;
+    bottom: 0;
+    right: 3rem;
+    rotate: -40deg;
+    transform-origin: right top;
+  }
     }
+    }    
 
 </style>

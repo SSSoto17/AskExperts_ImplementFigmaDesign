@@ -5,26 +5,43 @@ import Popover from "./Popover.astro"
 
 const {Theme} = Astro.props
 
+const nav = [
+    {
+        title: "Home",
+        path: "/"
+    },
+    {
+        title: "Case Study",
+        path: "casestudy"
+    },
+    {
+        title: "Team",
+        path: "team"
+    },
+    {
+        title: "About",
+        path: "about"
+    }
+]
+
 ---
 
 <header data-theme={Theme}>
     <nav class="desktop">
-        <p class="heading-5">AskExperts</p>
+        <a href={nav[0].path} class="heading-5">AskExperts</a>
         <ul role="list" class="active">
-            <li><a href="/">Home</a></li>
-            <li><a href="">Case Study</a></li>
-            <li><a href="">Team</a></li>
-            <li><a href="">About</a></li>
+            {nav.map(link => {
+                return <li><a href={link.path}>{link.title}</a></li>
+            })}
         </ul>
         <Button popup="login" label="Login" variant="secondary"/>
     </nav>
     <nav class="mobile">
         <p class="heading-5">AskExperts</p>
         <ul role="list">
-            <li><a href="/">Home</a></li>
-            <li><a href="">Case Study</a></li>
-            <li><a href="">Team</a></li>
-            <li><a href="">About</a></li>
+            {nav.map(link => {
+                return <li><a href={link.path}>{link.title}</a></li>
+            })}
             <li><Button popup="#login" label="Login" variant="secondary"/></li>
         </ul>
     </nav>
@@ -34,6 +51,7 @@ const {Theme} = Astro.props
 
 <style>
     header {
+        --clr-section-bg: oklch(from var(--clr-primary-03) calc(l + 0.02) c h);
         padding: var(--space-s);
         position: sticky;
         top: 0;

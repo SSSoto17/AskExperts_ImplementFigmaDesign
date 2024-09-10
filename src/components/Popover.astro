@@ -15,6 +15,7 @@ import Button from "./Button.astro";
 <style>
 
     section {
+        --clr-section-bg: var(--clr-primary-03);
         background: var(--clr-section-bg);
         padding: var(--space-s) var(--space-l) var(--space-l);
         border-radius: var(--crn-popup);
@@ -43,16 +44,13 @@ import Button from "./Button.astro";
             opacity: 0;
         }
 
-        &::backdrop {
-            background: var(--clr-primary-03);
-            backdrop-filter: blur(4px);
-        }
-
         &:popover-open {
             opacity: 1;
             
             &::backdrop {
-                opacity: 0.5;
+                opacity: 0.99;
+                background-color: rgba(0, 0, 0, .6);
+                backdrop-filter: blur(12px);
             }
         }
         

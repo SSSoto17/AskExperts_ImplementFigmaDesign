@@ -37,8 +37,6 @@ blockquote,
 dl,
 dd {
   margin: 0;
-  text-wrap: pretty;
-  max-width: 62ch;
 }
 
 h1,
