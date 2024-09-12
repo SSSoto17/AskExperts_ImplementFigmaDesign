@@ -1,6 +1,7 @@
 ---
 
 import Button from "./Button.astro"
+import Popover from "./Popover.astro"
 
 const {data} = Astro.props
 
@@ -12,6 +13,7 @@ const {data} = Astro.props
         })}
     </ul>
     <Button popup="login" label="Login" variant="secondary"/>
+    <Popover popoverID="login" />
 
 
 <style>

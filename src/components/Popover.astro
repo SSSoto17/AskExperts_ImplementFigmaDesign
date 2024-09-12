@@ -1,8 +1,11 @@
 ---
 import Button from "./Button.astro";
+
+const {popoverID} = Astro.props
+
 ---
 
-<section popover id="login">
+<section popover id={popoverID}>
     <form name="login" action="" data-theme="dark" class="flow-space">
         <h2 class="heading-2">Dashboard Login</h2>
         <input type="email" id="email" name="email" placeholder="Enter Email">

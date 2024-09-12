@@ -1,6 +1,7 @@
 ---
 
 import Button from "./Button.astro"
+import Popover from "./Popover.astro"
 
 const { data } = Astro.props
 
@@ -11,7 +12,8 @@ const { data } = Astro.props
     {data.map(link => {
         return <li><a href={link.path}>{link.title}</a></li>
             })}
-            <li><Button popup="#login" label="Login" variant="secondary"/></li>
+            <li><Button popup="mobilelogin" label="Login" variant="secondary"/></li>
+            <Popover popoverID="mobilelogin" />
     </ul>
 
 
