@@ -1,9 +1,35 @@
 ---
 
 import MainLayout from "../layouts/MainLayout.astro";
+import SubHero from "../components/sections/SubHero.astro";
+
+import heroImg from "../assets/images/about-hero.png"
+
+import CoreValues from "../components/sections/CoreValues.astro";
+import TeamFeature from "../components/sections/TeamFeature.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import Stats from "../components/sections/Stats.astro";
+import PageHeader from "../components/sections/PageHeader.astro";
+
+const header = {
+    title: "Turn your ideas into reality.",
+    tagline: "Our Vision",
+    description: "Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.",
+    img: "/src/assets/images/ourvision.jpg",
+    list: [
+        {item: "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day."},
+        {item: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital."}
+    ],
+    variant: "secondary"
+}
 
 ---
 
 <MainLayout PageTitle="AskExperts | About">
-
+    <SubHero title="Creative Services For Boost Your Business Growth" tagline="Services" src={heroImg} />
+    <PageHeader data={header} />
+    <Stats />
+    <CoreValues theme="medium" />
+    <TeamFeature />
+    <FAQ />
 </MainLayout>

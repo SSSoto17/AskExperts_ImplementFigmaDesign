@@ -1,0 +1,64 @@
+---
+
+import Button from "./Button.astro"
+import Tagline from "./Tagline.astro"
+import ProgressCircle from "./ProgressCircle.astro"
+
+const { data } = Astro.props
+
+---
+
+<article>
+    <header class="flow-space">
+        <Tagline>{data.tagline}</Tagline>
+        <h2 class="heading-2">{data.title}</h2>
+        <p>{data.description}</p>
+    </header>
+    <!-- BUTTON -->
+    {
+        () => {if (data.button) {
+            return <Button label={data.button.label} variant={data.button.variant} url={data.button.url} />
+        }}
+    }
+    <!-- STATISTICS -->
+    {
+        () => {if (data.stats) {
+            return <ul role="list">
+        {data.stats.map(stat => {
+            return <li><ProgressCircle data={stat} /></li>
+        })}
+    </ul>
+        }}
+    }
+    
+</article>
+
+<style>
+    
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--space-s) var(--space-xl);
+        margin-block-end: var(--space-l);
+        
+        > header {
+            --flow-space: var(--space-3xs);
+            flex: 2 2 22rem;
+        }
+
+        > ul {
+                display: flex;
+                flex: 2 2 60%;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: var(--space-xs);
+                place-content: center;
+            }
+
+        > a {
+            place-self: end;
+        }
+    }
+
+</style>

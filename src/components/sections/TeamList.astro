@@ -1,21 +1,26 @@
 ---
 import Button from "../Button.astro";
+import SectionHeader from "../SectionHeader.astro";
 import TeamCard from "../TeamCard.astro";
 
 
 const employees = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend-design/main/resources/json/employees.json")
         .then(res => res.json());
 
+const header = {
+    title: "Meet Our Great Team",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation.",
+    button: {
+        label: "Join Our Team",
+        variant: "primary",
+        url: "#"
+    }
+}
+
 ---
 
 <section>
-    <article>
-        <header class="flow-space">
-            <h2 class="heading-2">Meet Our Great Team</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation.</p>
-        </header>
-        <Button label="Join Our Team" variant="primary" />
-    </article>
+    <SectionHeader data={header} />
     <ul role="list">
         {employees.map(employee => {
             return <li><TeamCard data={employee} socials={employee.social_links} /></li>
@@ -28,20 +33,7 @@ const employees = await fetch("https://raw.githubusercontent.com/SSSoto17/fronte
     section {
         padding: var(--space-2xl) 0 0;
         gap: var(--space-m);
-
-        > article {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: var(--space-s) var(--space-l);
-            place-items: end;
-
-            > header {
-                --flow-space: var(--space-3xs);
-                flex: 1 24rem;
-            }
-        }
-
+        
         > ul {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -49,7 +41,6 @@ const employees = await fetch("https://raw.githubusercontent.com/SSSoto17/fronte
 
         > li {
             container: teamcard / inline-size;
-
             &:hover figure {
                 opacity: 0.75;
             }

@@ -1,21 +1,27 @@
 ---
-import Button from "../Button.astro";
 import Card from "../Card.astro";
-import Tagline from "../Tagline.astro";
+import SectionHeader from "../SectionHeader.astro";
 
 const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend-design/main/resources/json/corevalues.json")
     .then(res=>res.json());
 
-const {theme} = Astro.props
+const { theme } = Astro.props
+
+const header = {
+    title: content.title,
+    tagline: "Growing with our Clients",
+    description: content.subtitle,
+    button: {
+        label: content.button.text,
+        variant: "primary",
+        url: content.button.link
+    }
+}
+
 ---
 
 <section data-theme={theme}>
-    <Tagline>Growing with our Clients</Tagline>
-    <header class="flow-space">
-        <h2 class="heading-2">{content.title}</h2>
-        <p>{content.subtitle}</p>
-        <Button url={content.button.link} label={content.button.text} variant="primary" />
-    </header>
+    <SectionHeader data={header} />
     <ul role="list">
         {content.values.map(card => {
             return <li><a href={card.link.url}><Card data={card} /></a></li>
@@ -26,36 +32,24 @@ const {theme} = Astro.props
 <style>
 
 section {
-        header {
-            --flow-space: var(--step-0);            
-            margin-block-end: var(--space-l);
-
-            svg, h2, p {
-                grid-column: 1 / -2;
-            }
-            p, button {
-                grid-row: 3;
-            }
-
-            @media (600px < width) {
-                display: grid;
-                grid-template-columns: 1fr auto;
-                grid-template-rows: repeat(3, auto);
-                gap: 0 var(--space-s);
-            }
-        }
-
         ul {
             display: flex;
+            flex-wrap: wrap;
             gap: var(--space-s);
+            place-items: center;
             
             li {
-                flex-basis: min(400px, 90%);
+                
+                flex: 2 2 min(260px, 90%);
                 align-self: start;
                 transition: .15s ease-in;
                 
                 &:has(a:hover) {
-                    scale: 1.1;
+                    scale: 1.03;
+                }
+
+                [data-theme="medium"] & {
+                    --clr-card-bg: var(--clr-secondary-02);
                 }
             }
         }

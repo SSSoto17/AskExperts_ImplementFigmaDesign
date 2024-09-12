@@ -30,7 +30,6 @@ const images = import.meta.glob<{default: ImageMetadata }>("/src/assets/images/*
             <li><a href={socials.twitter}><Icon name="twitter" /></a></li>
         </ul>
     </article>
-</a>
 
 <style>
 
@@ -72,6 +71,14 @@ const images = import.meta.glob<{default: ImageMetadata }>("/src/assets/images/*
             ul {
                 display: flex;
                 gap: var(--space-2xs);
+
+                > li {
+                    transition: .15s ease-in;
+
+                    &:hover {
+                        opacity: .5;
+                    }
+                }
             }
             
             @container teamcard (360px < width) {

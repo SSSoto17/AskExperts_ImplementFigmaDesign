@@ -2,19 +2,28 @@
 
 import MainLayout from "../layouts/MainLayout.astro"
 import Hero from "../components/sections/Hero.astro"
-import Expectations from "../components/sections/Expectations.astro"
+import Expectations from "../components/sections/PageHeader.astro"
 import FinancialProjections from "../components/sections/FinancialProjections.astro"
 import Experience from "../components/sections/Experience.astro"
 import CoreValues from "../components/sections/CoreValues.astro"
 import Contact from "../components/sections/Contact.astro"
 
-const {Theme} = Astro.props
+const header = {
+    title: "What To Expect",
+    tagline: "We'll Work With You",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    img: "/src/assets/images/businesshelp.png",
+    list: [
+        {item: "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day."},
+        {item: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital."}
+    ]
+}
 
 ---
 
 <MainLayout PageTitle="AskExperts">
 	<Hero />
-	<Expectations />
+	<Expectations data={header} />
 	<FinancialProjections />
 	<Experience />
 	<CoreValues theme="dark" />

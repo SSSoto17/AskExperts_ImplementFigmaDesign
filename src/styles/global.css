@@ -38,7 +38,7 @@ a {
   --clr-heading: var(--clr-section-text);
   --clr-section-bg: var(--clr-primary-03);
   --clr-card-text: var(--clr-primary-03);
-  --clr-card-bg: var(--clr-secondary-02);
+  --clr-card-bg: var(--clr-secondary-01);
 }
 
 [data-theme="pop"] {

@@ -1,58 +1,39 @@
 ---
-import ProgressCircle from "../ProgressCircle.astro";
-import Tagline from "../Tagline.astro";
 
-const stats = [
-    {
-        percent: "85%",
-        value: "Consistency"
-    },
-    {
-        percent: "95%",
-        value: "Improvement"
-    },
-    {
-        percent: "90%",
-        value: "Branching"
-    }
-]
+import SectionHeader from "../SectionHeader.astro";
 
+const header = {
+    title: "More than 25 years of experience",
+    tagline: "Experience",
+    description: "3000+ our clients are insured around the World",
+    stats: [
+        {
+            percent: "85%",
+            value: "Consistency"
+        },
+        {
+            percent: "95%",
+            value: "Improvement"
+        },
+        {
+            percent: "90%",
+            value: "Branching"
+        }
+    ]
+}
 
 ---
 
 <section data-theme="pop">
-    <article>
-        <header class="flow-space">
-            <Tagline>Experience</Tagline>
-            <h2 class="heading-2">More than 25 years of experience</h2>
-            <p>3000+ our clients are insured around the World</p>
-        </header>
-        <ul role="list">
-            {stats.map(stat => {
-                return <ProgressCircle data={stat} />
-            })}
-        </ul>
-    </article>
+    <SectionHeader data={header} />
 </section>
 
 <style>
 
-section {
-        article {
-            --flow-space: var(--step-0);
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 0 var(--space-s);
-
-            header {display: grid; grid-column: 1;}
-            ul {
-                grid-column: 2;
-                grid-row: 1 / 3;
-                display: flex;
-                gap: var(--space-s);
-            }
-        }
-
+    section {
+    > article {
+            margin-block-end: 0;
+        }    
     }
-
+        
 </style>
