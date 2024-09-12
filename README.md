@@ -4,7 +4,7 @@ Dette har været en sjov og udfordrende opgave, hvori jeg føler at jeg har udvi
 
 En stor del af erfaringen er kommet af at benytte CSS nesting, som har givet mulighed for at gruppere design-elementer for på den måde at holde relevante styles yderligere samlet, og samtidig giver mulighed for at være endnu mere specifik ved brug af CSS-selectors indeni et scopet element.
 
-Til demonstration har jeg dette eksempel på hvordan jeg opsatte mit overordnede layout. Figma-designet er bygget op af afgrænsede sektioner med skarpe farveskift, der fylder hele skærmen, og derfor var det vigtigt at tænke dette ind i layoutet fra start. Jeg opsatte et grid med fleksible marginer, og sørgede for at alle direkte child-elements blev sat ind i en “main”kolonne og nedarvede grid-layoutet via subgrid.
+Til demonstration, har jeg dette eksempel på, hvordan jeg opsatte mit overordnede layout. Figma-designet er bygget op af afgrænsede sektioner med skarpe farveskift, der fylder hele skærmen, og derfor var det vigtigt at tænke dette ind i layoutet fra start. Jeg opsatte et grid med fleksible marginer, og sørgede for at alle direkte child-elements blev sat ind i en “main”kolonne og nedarvede grid-layoutet via subgrid.
 
 ![Layoutet i css.](/src/assets/images/progress/layout.png)  
 _Et fleksibelt layout i css, der tager højde for en main content kolonne og "breakout" elementer._
