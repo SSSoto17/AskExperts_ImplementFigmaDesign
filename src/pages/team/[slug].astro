@@ -65,13 +65,13 @@ const images = import.meta.glob<{default: ImageMetadata }>("/src/assets/images/*
 <style>
 
     section {
-        padding: var(--space-2xl) 0 0;
+        padding-block: var(--space-2xl) 0;
 
         .container {container: employee / inline-size;}
 
         article {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(22rem, auto));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), auto));
             /* grid-template-rows: repeat(auto, minmax(0, 290px)); */
             gap: var(--space-s) var(--space-xl);
 
@@ -82,11 +82,12 @@ const images = import.meta.glob<{default: ImageMetadata }>("/src/assets/images/*
             figure {
                 border-radius: var(--crn-img);
                 position: relative;
-                max-width: 30rem;
                 grid-row: 1 / 3;
+                place-self: center;
                 
                 img {
                     aspect-ratio: 1;
+                    width: min(100%, 30rem);
                     object-fit: cover;
                     border-radius: inherit;
                 }
@@ -123,7 +124,6 @@ const images = import.meta.glob<{default: ImageMetadata }>("/src/assets/images/*
             }
     
             .content {
-
                 header {
                     display: flex;
                     flex-wrap: wrap;
@@ -151,10 +151,11 @@ const images = import.meta.glob<{default: ImageMetadata }>("/src/assets/images/*
                     padding: var(--space-s) 0 0;
                 }
 
-                @container employee (width < 970px) {
+                @container employee (630px < width < 970px) {
 
-                    &:last-child:nth-child(2n - 1) {
+                    &:last-child {
                         grid-column: span 2;
+                        place-self: center;
                     }
                 }
             }

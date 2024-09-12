@@ -11,32 +11,21 @@ const { data } = Astro.props
 
 <article>
     <header class="flow-space">
-        {() => {if (data.icon) {
-                return <Icon name={data.icon} />
-            }}}
-        <Tagline>{data.tagline}</Tagline>
+        {data.icon && <Icon name={data.icon} />}
+        {data.tagline && <Tagline>{data.tagline}</Tagline>}
         <h2 class="heading-2">{data.title}</h2>
         <p>{data.description}</p>
     </header>
-    <!-- BUTTON -->
-    {() => {if (data.button) {
-            return <Button label={data.button.label} variant={data.button.variant} url={data.button.url} />
-        }}}
-    <!-- NAVIGATION -->
-     {() => {if (data.nav) {
-            return <nav>
-                {data.nav.map(icon => {
-                    return <Icon name={icon} />
-                })}
-                </nav>}}}
-    <!-- STATISTICS -->
-    {() => {if (data.stats) {
-            return <ul role="list">
+    {data.button && <Button label={data.button.label} variant={data.button.variant} url={data.button.url} />}
+    {data.nav && <nav>
+            {data.nav.map(icon => {
+                return <Icon name={icon} />
+            })}</nav>}
+    {data.stats && <ul role="list">
         {data.stats.map(stat => {
-            return <li><ProgressCircle data={stat} /></li>
+            return <ProgressCircle data={stat} />
         })}
-    </ul>}}}
-    
+    </ul>}
 </article>
 
 <style>
@@ -48,6 +37,7 @@ const { data } = Astro.props
         gap: var(--space-s) var(--space-xl);
         margin-block-end: var(--space-l);
         place-content: end;
+        place-items: center;
         
         > header {
             --flow-space: var(--space-3xs);
@@ -75,7 +65,7 @@ const { data } = Astro.props
                     flex: 2 2 60%;
                     flex-wrap: wrap;
                     justify-content: space-between;
-                    gap: var(--space-xs);
+                    gap: var(--space-xs) var(--space-m);
                     place-content: center;
                 }
 

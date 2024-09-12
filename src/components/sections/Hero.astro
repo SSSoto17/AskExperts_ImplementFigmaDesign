@@ -46,19 +46,21 @@ import HeroImg from "../../assets/images/index-hero.png"
 			<figure>
 				<Image src={HeroImg} alt="" />
 			</figure>
-		</article>		
-		<ul role="list" class="hero">
-			{cards.map(card => {
-				return <li><Card data={card} /></li>
-			})}
-		</ul>
+		</article>
+		<div class="container">
+			<ul role="list" class="hero">
+				{cards.map(card => {
+					return <li><Card data={card} /></li>
+				})}
+			</ul>
+		</div>
 </section>
 
 <style>
 
 	section {
 		padding: 0;
-		background: transparent;		 
+		background: transparent;	 
 		> article {
 			background: var(--clr-section-bg);
 			display: grid;
@@ -106,6 +108,10 @@ import HeroImg from "../../assets/images/index-hero.png"
                 var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
                 var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
             }
+
+			@media (width < 400px) {
+				> p {display: none;}
+			}
 			}
 
 			figure {
@@ -114,18 +120,33 @@ import HeroImg from "../../assets/images/index-hero.png"
 				img {
 					width: 50svw;
 					height: 38rem;
-					object-fit: cover;
-					
+					object-fit: cover;					
 				}
 			}
 		}
 
-		ul {
-				grid-column: main;
-				grid-row: 3 / 5;
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		.container {
+			container: scroller / inline-size;
+			grid-column: main;
+			grid-row: 3 / 5;
+			ul {
+				display: flex;
 				gap: var(--space-xs);
-		}	
+				
+				@container scroller (width < 800px) {
+					overflow-x: scroll;
+					scroll-snap-type: x mandatory;
+					-ms-overflow-style: none; /* for Internet Explorer, Edge */
+					scrollbar-width: none; /* for Firefox */
+					&::-webkit-scrollbar {
+						display: none; /* for Chrome, Safari, and Opera */
+					}					
+					> li {
+						flex: 1 0 100%;
+						scroll-snap-align: center;
+					}
+				}
+			}
+		}
 	}
 </style>

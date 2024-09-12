@@ -1,7 +1,8 @@
 ---
-
-import Button from "./Button.astro"
+import { Icon } from "astro-icon/components"
 import Popover from "./Popover.astro"
+import DesktopNav from "./DesktopNav.astro"
+import MobileNav from "./MobileNav.astro"
 
 const {Theme} = Astro.props
 
@@ -27,23 +28,11 @@ const nav = [
 ---
 
 <header data-theme={Theme}>
-    <nav class="desktop">
+    <nav>
         <a href={nav[0].path} class="heading-5">AskExperts</a>
-        <ul role="list" class="active">
-            {nav.map(link => {
-                return <li><a href={link.path}>{link.title}</a></li>
-            })}
-        </ul>
-        <Button popup="login" label="Login" variant="secondary"/>
-    </nav>
-    <nav class="mobile">
-        <p class="heading-5">AskExperts</p>
-        <ul role="list">
-            {nav.map(link => {
-                return <li><a href={link.path}>{link.title}</a></li>
-            })}
-            <li><Button popup="#login" label="Login" variant="secondary"/></li>
-        </ul>
+        <Icon name="menu" />
+        <MobileNav data={nav} />
+        <DesktopNav data={nav} />
     </nav>
     <Popover />
 </header>
@@ -56,53 +45,34 @@ const nav = [
         position: sticky;
         top: 0;
         z-index: 100;
-    }
 
-    nav.desktop {
-        display: none;
-    }
-
-    nav {
-        display: flex;
-        place-self: stretch;
-        align-items: flex-start;
-        justify-content: space-between;
-
-        p.heading-5 {
-        line-height: 105%; /* 1.96875rem */
-        }
-
-        ul {
-            display: none;
-            a {
-                text-decoration: none;
-                transition: .15s ease-in;
-                &:hover {
-                    opacity: .75;
-                }
-            }
-        }
-
-        ul.active {
-            display: block;
-        }
-    }
-
-    @media (900px < width) {
-
-        nav.mobile {
-            display: none;
-        }
-
-        nav.desktop {
+        nav {
             display: flex;
-
-            ul.active {
-            display: flex;
-            gap: clamp(1.5rem, 1.3696rem + 0.6522vw, 1.875rem);
+            justify-content: space-between;
+            gap: var(--space-xl);
+            position: relative;
+            place-self: stretch;
+            align-items: flex-start;
         }
-        }      
 
+        a.heading-5 {line-height: 105%}
+
+        [data-icon] {
+            width: var(--space-m);
+            cursor: pointer;
+            @media (width > 700px) {display: none;}
+        }
+
+        @media (width < 700px) {ul + a {display: none;}}
     }
 
 </style>
+
+<script>
+    const icon = document.querySelector("nav svg");
+    const nav = document.getElementById("mobile");
+
+    icon.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    })
+</script>

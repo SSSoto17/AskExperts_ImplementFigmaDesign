@@ -1,0 +1,32 @@
+---
+
+import Button from "./Button.astro"
+
+const {data} = Astro.props
+
+---
+    
+    <ul role="list">
+        {data.map(link => {
+            return <li><a href={link.path}>{link.title}</a></li>
+        })}
+    </ul>
+    <Button popup="login" label="Login" variant="secondary"/>
+
+
+<style>
+    ul {
+        display: flex;
+        gap: var(--space-s);
+
+        @media (width < 700px) {display: none;}
+    }
+    
+    a {
+        transition: .15s ease-in;
+        &:hover {opacity: .75;}
+    }
+
+        
+
+</style>

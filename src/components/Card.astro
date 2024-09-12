@@ -9,19 +9,12 @@ const { data } = Astro.props
 ---
 
     <article class="flow-space">
-        {
-            () => {if (data.icon) {
-                return <Icon name={data.icon} />
-                }
-            }
-            }
-        <h3 class="heading-6">{data.title}</h3>
+        <header>
+            {data.icon && <Icon name={data.icon} />}
+            <h3 class="heading-6">{data.title}</h3>
+        </header>
         <p>{data.description}</p>
-        {
-            () => {if (data.button) {
-                return <Button label={data.button.label} url={data.button.url} />
-            }}
-        } 
+        {data.button && <Button label={data.button.label} url={data.button.url} />} 
     </article>
 
 <style>
@@ -43,6 +36,13 @@ const { data } = Astro.props
         padding: var(--space-m) var(--space-s);
         transition: .15s ease-out;
 
+        header {
+            display: grid;
+            gap: var(--space-xs) var(--space-s);
+            align-items: center;
+            @container card (420px < width) {display: flex;}
+        }
+
         a {
             --flow-space: var(--space-s);
         }
@@ -59,11 +59,9 @@ const { data } = Astro.props
             }
         }
     }
-
     [data-icon] {
         width: var(--step-6);
         color: var(--clr-icon);
-        margin-block-end: var(--space-xs);
     }
 
 </style>

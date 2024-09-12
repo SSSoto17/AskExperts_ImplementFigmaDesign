@@ -15,14 +15,15 @@ const { data } = Astro.props
         display: grid;
         place-items: center;
         gap: var(--space-xs);
-        flex: 192px 0 2;
+        flex: 1;
         
         h3 {
             --size: 12rem;
             --offset-pos: calc(var(--size) * 0.03);
             aspect-ratio: 1;
-            width: var(--size);
-
+            width: 100%;
+            min-width: 8rem;
+            max-width: 14rem;
             border-radius: 100%;
             border: var(--offset-pos) solid transparent;
             background:
