@@ -11,6 +11,8 @@ _Et fleksibelt layout i css, der tager højde for en main content kolonne og "br
 
 Når dette var gjort, kunne jeg opsætte en utility-class, der ville sætte et element til at spanne over hele skærmen om nødvendigt.
 
+## Farvetemaer
+
 For at opsætte sektioner med farveskift, hvori farvepaletten bliver brugt til forskellige elementer af designet—f.eks. ombytning på tekstfarve og baggrundsfarve—har jeg benyttet data-themes som en attribut til at fortælle min css hvilket “farvetema” der skal benyttes på en given sektion. Hver gang temaet skifter, bliver min custom css property automatisk opdateret.
 
 ![Farvetemaer sat op med data-themes.](/src/assets/images/progress/colorthemes.png)  
@@ -18,6 +20,8 @@ _Farvetemaer sat op med data-themes._
 
 ![Et helt element bliver nemt ændret med variabler.](/src/assets/images/progress/colorthemesdemo.png)  
 _Et helt element bliver nemt ændret med variabler._
+
+## Responsive Cards
 
 En stor del af at gøre websiden responsiv lå i at udnytte grid og flexbox’s egne indbyggede funktioner til at få child-elements skubbet ned på næste række, når der ikke længere er plads til dem. Her er et eksempel fra oversigten over teamet på brug af auto-fill til at få browseren til selv at udregne hvor mange kolonner, der er plads til:
 
@@ -38,4 +42,6 @@ _I min container query kan jeg definere ændringer i layoutet på mit card, når
 ![Her har jeg brugt en container query på mine kort, så elementer lægger sig ved siden af hinanden når kortet bliver bredt.](/src/assets/images/progress/cardscontainerquerydemo2.png)  
 _Her har jeg brugt en container query på mine kort, så elementer lægger sig ved siden af hinanden når kortet bliver bredt._
 
-Det har været en stor opgave at kode en hel hjemmeside med så mange nye redskaber, men også sjovt. Hvad jeg fandt mest udfordrende var at gennemskue, hvordan jeg bedst kunne udnytte disse nye properties mest effektivt og systematisk.
+## Konklusion
+
+Det har været en stor opgave at kode en hel hjemmeside med så mange nye redskaber, men også sjovt. Hvad jeg fandt mest udfordrende var at gennemskue, hvordan jeg bedst kunne udnytte disse nye properties mest effektivt og systematisk. Jeg kan mærke at jeg bliver hurtigere og hurtigere til at sætte min kode op på en måde, der er vedligeholdelsesvenlig, og er blevet inspireret til at benytte mange nye ressourcer til at bygge ovenpå mit workflow til fremtidige projekter.
