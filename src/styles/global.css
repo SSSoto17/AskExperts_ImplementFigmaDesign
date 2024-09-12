@@ -57,7 +57,7 @@ a {
 p {
   font-size: var(--step-0);
   line-height: 147.5%; /* 1.475rem */
-  max-width: 68ch;
+  max-width: 75ch;
 }
 
 .heading-1,

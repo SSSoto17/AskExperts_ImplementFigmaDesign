@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components'
 
 import Button from "./Button.astro"
 import Tagline from "./Tagline.astro"
@@ -10,26 +11,31 @@ const { data } = Astro.props
 
 <article>
     <header class="flow-space">
+        {() => {if (data.icon) {
+                return <Icon name={data.icon} />
+            }}}
         <Tagline>{data.tagline}</Tagline>
         <h2 class="heading-2">{data.title}</h2>
         <p>{data.description}</p>
     </header>
     <!-- BUTTON -->
-    {
-        () => {if (data.button) {
+    {() => {if (data.button) {
             return <Button label={data.button.label} variant={data.button.variant} url={data.button.url} />
-        }}
-    }
+        }}}
+    <!-- NAVIGATION -->
+     {() => {if (data.nav) {
+            return <nav>
+                {data.nav.map(icon => {
+                    return <Icon name={icon} />
+                })}
+                </nav>}}}
     <!-- STATISTICS -->
-    {
-        () => {if (data.stats) {
+    {() => {if (data.stats) {
             return <ul role="list">
         {data.stats.map(stat => {
             return <li><ProgressCircle data={stat} /></li>
         })}
-    </ul>
-        }}
-    }
+    </ul>}}}
     
 </article>
 
@@ -41,24 +47,41 @@ const { data } = Astro.props
         justify-content: space-between;
         gap: var(--space-s) var(--space-xl);
         margin-block-end: var(--space-l);
+        place-content: end;
         
         > header {
             --flow-space: var(--space-3xs);
             flex: 2 2 22rem;
+            [data-icon] {width: var(--space-xl)}
         }
 
-        > ul {
+        > nav {              
                 display: flex;
-                flex: 2 2 60%;
-                flex-wrap: wrap;
-                justify-content: space-between;
                 gap: var(--space-xs);
-                place-content: center;
+                place-self: end;
+
+                > * {
+                    cursor: pointer;
+                    transition: .15s ease-in;
+                    width: var(--space-l);
+                    &:hover {
+                        scale: 1.1;
+                    }
+                }
             }
 
-        > a {
-            place-self: end;
-        }
+            > ul {
+                    display: flex;
+                    flex: 2 2 60%;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    gap: var(--space-xs);
+                    place-content: center;
+                }
+
+            > nav, > a {
+                place-self: end;
+            }
     }
 
 </style>

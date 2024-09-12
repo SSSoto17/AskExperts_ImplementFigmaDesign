@@ -1,8 +1,15 @@
 ---
 
 import MainLayout from "../layouts/MainLayout.astro";
+import SubHero from "../components/sections/SubHero.astro";
+import CaseStudyHeader from "../components/sections/CaseStudyHeader.astro"
+import Article from "../components/sections/Article.astro"
+import heroImg from "../assets/images/casestudy-hero.png"
 
 ---
 
 <MainLayout PageTitle="AskExperts | Case Study">
+    <SubHero title="Taxes & Efficiency" tagline="Case Studies Single" src={heroImg}/>
+    <CaseStudyHeader />
+    <Article />
 </MainLayout>

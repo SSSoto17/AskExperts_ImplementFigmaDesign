@@ -2,22 +2,24 @@
 
 import { Icon } from 'astro-icon/components'
 import Card from "../Card.astro";
+import SectionHeader from '../SectionHeader.astro';
 
 const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend-design/main/resources/json/projections.json")
     .then(res=>res.json());
 
+const header = {
+    icon: "financial-projections",
+    title: "Financial Projections",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    nav: [
+        "arrow-left",
+        "arrow-right"]
+}
+
 ---
 
 <section data-theme="medium">
-    <header class="flow-space">
-        <Icon name="fp/header" />
-        <h2 class="heading-2">{content.title}</h2>
-        <p>{content.subtitle}</p>
-        <nav>
-            <Icon name="fp/arrow-left" /> 
-            <Icon name="fp/arrow-right" />
-        </nav>        
-    </header>
+    <SectionHeader data={header} />
     <ul role="list" class="full-bleed">
         {content.values.map(card => {
             return <li><a href={card.link.url}><Card data={card} /></a></li>
@@ -27,43 +29,6 @@ const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend
 
 <style>
     section {
-            header {
-            --flow-space: var(--step-0);            
-            margin-block-end: var(--space-l);
-
-            svg, h2, p {
-                grid-column: 1 / -2;
-            }
-            p, nav {
-                grid-row: 3;
-            }
-            nav {
-                grid-column: 2;                
-                display: flex;
-                gap: var(--space-xs);
-                margin-block-start: var(--space-s);
-
-                > * {
-                    cursor: pointer;
-                    transition: .15s ease-in;
-                    &:hover {
-                        scale: 1.1;
-                    }
-                }
-            }
-
-            > [data-icon] {
-                width: var(--space-xl);
-            }
-
-            @media (600px < width) {
-                display: grid;
-                grid-template-columns: 1fr auto;
-                grid-template-rows: repeat(3, auto);
-                gap: 0 var(--space-s);
-            }
-        }
-
         ul {
             display: flex;
             gap: var(--space-s);
@@ -79,8 +44,7 @@ const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend
             
             li {
                 scroll-snap-align: center;
-                flex-basis: min(400px, 90%);
-                flex-shrink: 0;
+                flex: 1 0 min(400px, 90%);
                 align-self: start;
 
                 &:hover {
@@ -91,8 +55,5 @@ const content = await fetch("https://raw.githubusercontent.com/SSSoto17/frontend
                 }
             }
         }
-    }
-    [data-icon] {
-        width: var(--space-l);
     }
 </style>
