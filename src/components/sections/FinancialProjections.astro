@@ -1,6 +1,5 @@
 ---
 
-import { Icon } from 'astro-icon/components'
 import Card from "../Card.astro";
 import SectionHeader from '../SectionHeader.astro';
 
@@ -46,6 +45,9 @@ const header = {
                 scroll-snap-align: center;
                 flex: 1 0 min(400px, 90%);
                 align-self: start;
+                > a article {
+                    transition: none;
+                }
 
                 &:hover {
                     --clr-card-bg: var(--clr-primary-03);
@@ -57,3 +59,51 @@ const header = {
         }
     }
 </style>
+
+<script>
+
+    const scrollContainer = document.querySelector("main > section:nth-child(3) ul");
+    const scrollCards = scrollContainer.querySelectorAll("li");
+
+    const cardsCount = scrollCards.length;
+    let activeCard = 0;
+
+    const buttons = document.querySelectorAll("main > section:nth-child(3) nav svg");
+    const btnPrev = buttons[0];
+    const btnNext = buttons[1];
+
+    function scrollToCard() {
+        scrollCards[activeCard].scrollIntoView({behavior: "smooth", block: "nearest", inline: "start"});
+    }
+
+    // Load in cards
+
+    window.addEventListener("load", () => {
+        scrollCards[0].classList.add("active");
+    })
+
+    // Next card
+
+    btnNext.addEventListener("click", () => {
+        scrollCards[activeCard].classList.remove("active");
+        activeCard++;
+        if (activeCard == cardsCount) {
+            activeCard = 0;
+        }
+        scrollCards[activeCard].classList.add("active");
+        scrollToCard();
+    })
+
+    // Prev card
+
+    btnPrev.addEventListener("click", () => {
+        scrollCards[activeCard].classList.remove("active");
+        activeCard--;
+        if (activeCard < 0) {
+            activeCard = 3;
+        }
+        scrollCards[activeCard].classList.add("active");
+        scrollToCard();
+    })
+
+</script>
